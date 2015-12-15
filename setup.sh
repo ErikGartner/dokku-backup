@@ -8,5 +8,7 @@ git clone https://github.com/jnwatts/pushover.sh.git /opt/pushover
 chmod +x /opt/pushover/pushover.sh
 ln -s /opt/pushover/pushover.sh /usr/local/bin/pushover.sh
 
+ln -s ./dokku-backup.sh /usr/local/bin/dokku-backup.sh
+
 echo "Configuring requirements"
 /usr/local/bin/dropbox_uploader.sh
