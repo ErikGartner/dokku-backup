@@ -6,8 +6,9 @@
 dokku_backup_database() {
   tmp=$(mktemp)
   dokku $1 > $tmp
-  msg=$(dropbox_uploader.sh upload $tmp $2"/"$3"/"$current_time".bak")
-  pushover.sh -t "Dokku-backup" $msg
+  msg=$(dropbox_uploader.sh upload $tmp $2"/"$3"/"$current_time".bak" -f $DB_CONFIG_PATH)
+  echo $msg
+  pushover.sh -t "Dokku-backup" $msg -T PO_TOKEN -U PO_USER
   rm -f $tmp
 }
 
@@ -15,7 +16,10 @@ dokku_backup_database() {
 git pull origin
 
 # set variables
+source env.sh
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+
+echo "Starting Dokku-backup script!"
 
 # do backup
 dokku_backup_database "dokku postgres:export treachery2" "treachery" "postgres"
