@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+# $1 - dokku command
+# $2 - name
+# $3 - type
+dokku_backup_database() {
+  $tmp=$(mktemp)
+  dokku $1 > $tmp
+  dropbox_uploader.sh upload $tmp $2"/"$3"/"$current_time".bak"
+  rm -f $tmp
+}
+
 # update to latests version
 git pull origin
 
@@ -8,8 +18,4 @@ current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 tmp=$(mktemp -d)
 
 # do backup
-dokku postgres:export treachery2 > $tmp"/treachery2_postgres.bak"
-dropbox_uploader.sh upload $tmp"/treachery2_postgres.bak" "treachery/postgres_"$current_time".bak"
-
-# clean up
-rm -rf $tmp
+dokku_backup_database "dokku postgres:export treachery2" "treachery" "database"
