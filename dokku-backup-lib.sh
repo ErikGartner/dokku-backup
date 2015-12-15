@@ -14,4 +14,4 @@ dokku_backup_database() {
   rm -f $tmp
 }
 
-echo "Starting Dokku-backup!"
+echo "Starting Dokku-backup with timestamp"$current_time
