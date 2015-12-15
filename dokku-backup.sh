@@ -10,11 +10,13 @@ dokku_backup_database() {
   rm -f $tmp
 }
 
-# update to latests version
+# update to latests version. affects next run only however.
 git pull origin
 
 # set variables
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 
 # do backup
-dokku_backup_database "dokku postgres:export treachery2" "treachery" "database"
+dokku_backup_database "dokku postgres:export treachery2" "treachery" "postgres"
+dokku_backup_database "dokku mongo:export randy2" "randy" "mongo"
+dokku_backup_database "dokku mongo:export ghostdoc" "ghostdoc" "mongo"
