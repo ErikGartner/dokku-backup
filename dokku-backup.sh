@@ -8,9 +8,11 @@ dokku_backup_database() {
   dokku $1 > $tmp
   msg=$(dropbox_uploader.sh -f $DB_CONFIG_PATH upload $tmp $2"/"$3"/"$current_time".bak")
   echo $msg
-  pushover.sh -t "Dokku-backup" $msg -T PO_TOKEN -U PO_USER
+  pushover.sh -T PO_TOKEN -U PO_USER -t "Dokku-backup" $msg
   rm -f $tmp
 }
+
+echo "Starting Dokku-backup script!"
 
 # update to latests version. affects next run only however.
 git pull origin
@@ -18,8 +20,6 @@ git pull origin
 # set variables
 source env.sh
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
-
-echo "Starting Dokku-backup script!"
 
 # do backup
 dokku_backup_database "dokku postgres:export treachery2" "treachery" "postgres"
