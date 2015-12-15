@@ -6,7 +6,8 @@
 dokku_backup_database() {
   tmp=$(mktemp)
   dokku $1 > $tmp
-  dropbox_uploader.sh upload $tmp $2"/"$3"/"$current_time".bak"
+  msg=$(dropbox_uploader.sh upload $tmp $2"/"$3"/"$current_time".bak")
+  pushover.sh -t "Dokku-backup" $msg
   rm -f $tmp
 }
 
