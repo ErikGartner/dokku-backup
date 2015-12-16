@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$( dirname "${BASH_SOURCE[0]}" )"
 git pull origin
-source dokku-backup-lib.sh
+source ./dokku-backup-lib.sh
 
 # Below you write your backup commands
 #
