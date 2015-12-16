@@ -1,6 +1,8 @@
 # set variables
 source env.sh
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
 
 # $1 - dokku command
 # $2 - name
