@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$( dirname "${BASH_SOURCE[0]}" )"
-git pull origin
+git pull origin --rebase
 source ./dokku-backup-lib.sh
 
 # Below you write your backup commands
