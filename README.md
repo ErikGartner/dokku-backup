@@ -22,5 +22,5 @@ You might also want to add ```dokku-backup.sh``` as a cron job.
 ## Usage
 Edit ```dokku-backup.sh``` to add your backup function calls, for example:
 ```
-dokku_backup_database "dokku mongo:export ghostdoc" "ghostdoc" "mongo"
+dokku_backup_database "dokku mongo:export <database name>" "<app name>" "<service name>"
 ```
