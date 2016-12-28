@@ -6,4 +6,4 @@ source ./dokku-backup-lib.sh
 # Below you write your backup commands
 #
 # For example:
-# dokku_backup_database "dokku mongo:export ghostdoc" "ghostdoc" "mongo"
+# dokku_backup_database "mongo:export <database name>" "<app name>" "<service name>"
