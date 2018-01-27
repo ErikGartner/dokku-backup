@@ -1,0 +1,6 @@
+[submodule "Dropbox-Uploader"]
+	path = Dropbox-Uploader
+	url = https://github.com/andreafabrizi/Dropbox-Uploader
+[submodule "pushover.sh"]
+	path = pushover.sh
+	url = https://github.com/jnwatts/pushover.sh
