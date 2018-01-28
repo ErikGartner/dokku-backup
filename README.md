@@ -20,7 +20,10 @@ export PO_USER="your user/group key here"
 export DB_CONFIG_PATH=~/.dropbox_uploader
 ```
 
-You might also want to add ```dokku-backup.sh``` as a cron job.
+You might also want to add ```dokku-backup.sh``` as a cron job. For example like this with `crontab -e`:
+```
+0 5 * * 1 /bin/bash /opt/dokku-backup/dokku-backup.sh >> /var/log/dokku-backup.log
+```
 
 ## Usage
 Edit ```dokku-backup.sh``` to add your backup function calls, for example:
