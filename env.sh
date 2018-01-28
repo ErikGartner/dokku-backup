@@ -6,4 +6,3 @@ export PO_USER="your user/group key here"
 
 # Dropbox
 export DB_CONFIG_PATH=~/.dropbox_uploader
-export DB_BIN_PATH=./Dropbox-Uploader/
