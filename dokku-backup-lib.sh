@@ -9,7 +9,7 @@ current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 dokku_backup_database() {
   tmp=$(mktemp)
   dokku $1 > $tmp
-  msg=$($DB_BIN_PATH"dropbox_uploader.sh" -f $DB_CONFIG_PATH upload $tmp $2"/"$3"/"$current_time".bak")
+  msg=$(./Dropbox-Uploader/dropbox_uploader.sh -f $DB_CONFIG_PATH upload $tmp $2"/"$3"/"$current_time".bak")
   if [ "$4" = "1" ]; then
     ./pushover.sh/pushover.sh -T $PO_TOKEN -U $PO_USER -t "Dokku-backup: "$2 $msg
   fi
